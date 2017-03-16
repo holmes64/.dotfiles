@@ -1,0 +1,4 @@
+# .atom directory
+.atom/*
+!.atom/packages.txt
+
