@@ -1,0 +1,10 @@
+[[plugins]]
+	repo = 'Shougo/vimproc.vim'
+	build = 'make'
+
+[[plugins]] # configurable statusline/tabline
+  repo = 'itchyny/lightline.vim'
+  on_path = '.*'
+  hook_add = 'call dein_hook#lightline#source()'
+
+
