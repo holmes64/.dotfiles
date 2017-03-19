@@ -2,3 +2,5 @@
 .atom/*
 !.atom/packages.txt
 
+# .vim directory
+.vim/dein
