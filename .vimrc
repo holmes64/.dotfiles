@@ -1,5 +1,6 @@
 set encoding=utf-8
 scriptencoding utf-8
+syntax on
 
 augroup vimrc
   autocmd!
@@ -24,6 +25,7 @@ endif
 
 execute 'set runtimepath^=' . s:dein_repo_dir
 set runtimepath+=~/.vim
+
 
 " tomlファイルのための設定""""""""""""""""""""""""""""""""""""""""""""""""""""
 	call dein#begin(s:dein_dir)
