@@ -107,6 +107,9 @@ alias vi='vim'
 alias la='ls -a'
 alias ll='ls -l'
 alias lt='ls -l -a -t'
+alias bu='brew update'
+alias bd='brew doctor'
+
 #
 ### Completion #################################################################
 #
