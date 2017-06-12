@@ -9,7 +9,7 @@ augroup END
 " Leader
 let g:mapleader="\<Space>"
 
-" Dein
+" Dein Setting
 if &compatible
   set nocompatible
 endif
