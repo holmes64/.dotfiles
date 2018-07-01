@@ -1,7 +1,5 @@
 
 limit coredumpsize 0
-
-
 #
 ### zplug ####################################################################
 #
@@ -110,6 +108,9 @@ alias lt='ls -l -a -t'
 alias bu='brew update'
 alias bd='brew doctor'
 
+# git
+alias gitst='git status'
+
 #
 ### Completion #################################################################
 #
@@ -133,3 +134,10 @@ sudo_path=({/usr/local,/usr,}/sbin(N-/))
 
 # setting about zsh-completions
 fpath=(/usr/local/share/zsh-completions $fpath)
+
+
+######################################################
+# vscode alias
+code() {VSCODE_CWD="$PWD" open -n -b "com.microsoft.VSCode" --args $*}
+
+#####################################################
