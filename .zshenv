@@ -17,13 +17,14 @@ path=(# システム用
       /var/lib/gems/*/bin(N-/)
       # MacPorts用
       /opt/local/bin(N-/)
-
-	/usr/bin(N-/)
+      	/usr/bin(N-/)
 	)
 
 # home-brewにPATHを通す
 export PATH=/usr/local/bin:$PATH
 
 # Python version management Pyenv
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$HOME/.pyenv/bin:$PATH"
+export PATH="{$PYENV_ROOT}/bin:$PATH"
+export PYENV_ROOT="${HOME}/.pyenv"
+
+eval "$(pyenv init -)"
