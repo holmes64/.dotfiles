@@ -1,19 +1,32 @@
 
 limit coredumpsize 0
-#
-### zplug ####################################################################
-#
-source ~/.zplug/init.zsh
 
+#
+### prezto
+#
+if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
+  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+fi
+
+#
+### zplug
+#
+if [[ -s "$HOME/.zplug/init.zsh" ]]; then
+  source "$HOME/.zplug/init.zsh"
+fi
+
+#
 ### define plugins
+#
 zplug 'zsh-users/zsh-completions'
 zplug 'zsh-users/zsh-syntax-highlighting', defer:3
 zplug 'mollifier/anyframe'
 
-# Interactive filtering
+#
+### Interactive filtering
+#
 zplug 'peco/peco', as:command, from:gh-r, rename-to:peco
 zplug 'junegunn/fzf-bin', as:command, from:gh-r, rename-to:fzf
-
 # check install
 if ! zplug check --verbose; then
   printf 'Install? [y/N]: '
@@ -21,18 +34,10 @@ if ! zplug check --verbose; then
     echo; zplug install
   fi
 fi
-
-zplug load --verbose
-
-#
-### prezto ###################################################################
-#
-if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
-  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
-fi
+zplug load
 
 #
-### Autoloadings ###############################################################
+### Autoloadings
 #
 autoload -Uz add-zsh-hook
 autoload -Uz compinit && compinit -u
@@ -99,7 +104,7 @@ export SAVEHIST=1000000
 export EDITOR=vim
 
 #
-### Alias ####################################################################
+### Alias
 #
 alias vi='vim'
 alias la='ls -a'
@@ -112,7 +117,7 @@ alias bd='brew doctor'
 alias gitst='git status'
 
 #
-### Completion #################################################################
+### Completion
 #
 zstyle ':completion:*' completer _complete _match _approximate
 zstyle ':completion:*' group-name ''
