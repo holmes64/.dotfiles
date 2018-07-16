@@ -1,5 +1,5 @@
 " Colorscheme
-colorscheme onedark
+colorscheme hybrid
 
 " Terminal
 if &term =~ "xterm-256color" || "screen-256color"
