@@ -25,8 +25,8 @@ zplug 'mollifier/anyframe'
 #
 ### Interactive filtering
 #
-zplug 'peco/peco', as:command, from:gh-r, rename-to:peco
-zplug 'junegunn/fzf-bin', as:command, from:gh-r, rename-to:fzf
+#zplug 'peco/peco', as:command, from:gh-r, rename-to:peco
+#zplug 'junegunn/fzf-bin', as:command, from:gh-r, rename-to:fzf
 # check install
 if ! zplug check --verbose; then
   printf 'Install? [y/N]: '
