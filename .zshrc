@@ -8,13 +8,22 @@ if [[ -s "$HOME/.zplug/init.zsh" ]]; then
 fi
 
 #
-### define plugins
+### prezto
 #
-zplug 'zsh-users/zsh-completions'
-zplug 'mollifier/anyframe'
+if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
+  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+fi
+
+#
+### Zsh plugins
+#
+zplug "zsh-users/zsh-completions"
+zplug "zsh-users/zsh-syntax-highlighting"
+zplug "mollifier/anyframe"
 
 #
 ### Interactive filtering
+#A
 #
 # check install
 if ! zplug check --verbose; then
