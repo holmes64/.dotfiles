@@ -1,11 +1,5 @@
 
 limit coredumpsize 0
-#
-### zplug
-#
-if [[ -s "$HOME/.zplug/init.zsh" ]]; then
-  source "$HOME/.zplug/init.zsh"
-fi
 
 #
 ### prezto
@@ -15,24 +9,18 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
 fi
 
 #
+### zplug
+#
+if [[ -s "$HOME/.zplug/init.zsh" ]]; then
+  source "$HOME/.zplug/init.zsh"
+fi
+
+#
 ### Zsh plugins
 #
 zplug "zsh-users/zsh-completions"
 zplug "zsh-users/zsh-syntax-highlighting"
 zplug "mollifier/anyframe"
-
-#
-### Interactive filtering
-#A
-#
-# check install
-if ! zplug check --verbose; then
-  printf 'Install? [y/N]: '
-  if read -q; then
-    echo; zplug install
-  fi
-fi
-zplug load
 
 ## peco
 # ⌃ r で peco で history 検索
@@ -43,6 +31,18 @@ function peco-history-selection() {
 }
 zle -N peco-history-selection
 bindkey '^R' peco-history-selection
+
+#
+### Interactive filtering
+#
+# check install
+if ! zplug check --verbose; then
+  printf 'Install? [y/N]: '
+  if read -q; then
+    echo; zplug install
+  fi
+fi
+zplug load
 
 #
 ### Autoloadings
@@ -125,6 +125,7 @@ alias ll='ls -l'
 alias lt='ls -l -a -t'
 alias bu='brew update'
 alias bd='brew doctor'
+alias python='python3'
 
 #
 ### Completion
@@ -157,5 +158,4 @@ code() {VSCODE_CWD="$PWD" open -n -b "com.microsoft.VSCode" --args $*}
 #####################################################
 # Related Docker
 source <(kubectl completion zsh)
-
 

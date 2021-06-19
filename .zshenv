@@ -6,7 +6,6 @@ typeset -U path
 ##               globがマッチしなかったり存在しないパスを無視する。
 ##            -: シンボリックリンク先のパスを評価。
 ##            /: ディレクトリのみ残す
-alias py3='eval "$(pyenv init -)"'
 alias ql='qlmanage -p "$@" >& /dev/null'
 
 path=(# システム用
@@ -22,9 +21,3 @@ path=(# システム用
 
 # home-brewにPATHを通す
 export PATH=/usr/local/bin:$PATH
-
-# Python version management Pyenv
-export PATH="{$PYENV_ROOT}/bin:$PATH"
-export PYENV_ROOT="${HOME}/.pyenv"
-
-eval "$(pyenv init -)"
