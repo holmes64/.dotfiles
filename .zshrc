@@ -19,14 +19,11 @@ fi
 ### define plugins
 #
 zplug 'zsh-users/zsh-completions'
-#zplug 'zsh-users/zsh-syntax-highlighting', defer:3
 zplug 'mollifier/anyframe'
 
 #
 ### Interactive filtering
 #
-#zplug 'peco/peco', as:command, from:gh-r, rename-to:peco
-#zplug 'junegunn/fzf-bin', as:command, from:gh-r, rename-to:fzf
 # check install
 if ! zplug check --verbose; then
   printf 'Install? [y/N]: '
@@ -35,6 +32,16 @@ if ! zplug check --verbose; then
   fi
 fi
 zplug load
+
+## peco
+# ⌃ r で peco で history 検索
+function peco-history-selection() {
+    BUFFER=`history -n 1 | tail -r  | awk '!a[$0]++' | peco`
+    CURSOR=$#BUFFER
+    zle reset-prompt
+}
+zle -N peco-history-selection
+bindkey '^R' peco-history-selection
 
 #
 ### Autoloadings
@@ -103,6 +110,11 @@ export HISTSIZE=1000
 export SAVEHIST=1000000
 export EDITOR=vim
 
+# g++
+# not use default mac clang
+# I use gcc
+export PATH="/usr/local/bin:$PATH"
+
 #
 ### Alias
 #
@@ -112,9 +124,6 @@ alias ll='ls -l'
 alias lt='ls -l -a -t'
 alias bu='brew update'
 alias bd='brew doctor'
-
-# git
-alias gitst='git status'
 
 #
 ### Completion
@@ -140,9 +149,12 @@ sudo_path=({/usr/local,/usr,}/sbin(N-/))
 # setting about zsh-completions
 fpath=(/usr/local/share/zsh-completions $fpath)
 
-
 ######################################################
 # vscode alias
 code() {VSCODE_CWD="$PWD" open -n -b "com.microsoft.VSCode" --args $*}
 
 #####################################################
+# Related Docker
+source <(kubectl completion zsh)
+
+
