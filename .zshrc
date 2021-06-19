@@ -1,3 +1,10 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 
 limit coredumpsize 0
 
@@ -21,6 +28,7 @@ fi
 zplug "zsh-users/zsh-completions"
 zplug "zsh-users/zsh-syntax-highlighting"
 zplug "mollifier/anyframe"
+zplug "romkatv/powerlevel10k", as:theme, depth:1
 
 ## peco
 # ⌃ r で peco で history 検索
@@ -51,6 +59,10 @@ autoload -Uz add-zsh-hook
 autoload -Uz compinit && compinit -u
 autoload -Uz vcs_info
 autoload -Uz ls-abbrev
+autoload -Uz promptinit
+promptinit
+prompt powerlevel10k
+
 #
 ### General setting
 #
@@ -159,3 +171,5 @@ code() {VSCODE_CWD="$PWD" open -n -b "com.microsoft.VSCode" --args $*}
 # Related Docker
 source <(kubectl completion zsh)
 
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
