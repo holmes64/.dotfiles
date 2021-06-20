@@ -29,6 +29,8 @@ zplug "zsh-users/zsh-completions"
 zplug "zsh-users/zsh-syntax-highlighting"
 zplug "mollifier/anyframe"
 zplug "romkatv/powerlevel10k", as:theme, depth:1
+zplug "greymd/docker-zsh-completion"
+zplug "zsh-users/zsh-autosuggestions"
 
 ## peco
 # ⌃ r で peco で history 検索
