@@ -21,3 +21,10 @@ path=(# システム用
 
 # home-brewにPATHを通す
 export PATH=/usr/local/bin:$PATH
+
+
+# Setting the go path
+export PATH=$PATH:/usr/local/go/bin
+export GOPATH=$HOME/.go
+export PATH=$PATH:$GOPATH/bin
+
