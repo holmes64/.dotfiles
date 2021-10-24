@@ -1,37 +1,32 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
+
+#
+### oh-my-zsh
+#
+
+# Path to your oh-my-zsh installation.
+export ZSH="/Users/takuya/.oh-my-zsh"
+
+# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+ZSH_THEME="powerlevel10k/powerlevel10k"
+
+# Add wisely, as too many plugins slow down shell startup.
+plugins=(git web-search fzf zsh-autosuggestions) 
+
+source $ZSH/oh-my-zsh.sh
+
+#
+#### powerlevel10k
+#
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 limit coredumpsize 0
 
 #
-### prezto
-#
-if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
-  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
-fi
-
-#
-### zplug
-#
-if [[ -s "$HOME/.zplug/init.zsh" ]]; then
-  source "$HOME/.zplug/init.zsh"
-fi
-
-#
-### Zsh plugins
-#
-zplug "zsh-users/zsh-completions"
-zplug "zsh-users/zsh-syntax-highlighting"
-zplug "mollifier/anyframe"
-zplug "romkatv/powerlevel10k", as:theme, depth:1
-zplug "greymd/docker-zsh-completion"
-zplug "zsh-users/zsh-autosuggestions"
-
 ## peco
 # ⌃ r で peco で history 検索
 function peco-history-selection() {
@@ -43,18 +38,6 @@ zle -N peco-history-selection
 bindkey '^R' peco-history-selection
 
 #
-### Interactive filtering
-#
-# check install
-if ! zplug check --verbose; then
-  printf 'Install? [y/N]: '
-  if read -q; then
-    echo; zplug install
-  fi
-fi
-zplug load
-
-#
 ### Autoloadings
 #
 autoload -Uz add-zsh-hook
@@ -62,25 +45,31 @@ autoload -Uz compinit && compinit -u
 autoload -Uz vcs_info
 autoload -Uz ls-abbrev
 autoload -Uz promptinit
-promptinit
-prompt powerlevel10k
 
 #
 ### General setting
 #
 
+# Alias
+alias vi="nvim"
+alias vim="nvim"
+alias view="nvim -R"
+alias la="ls -a"
+alias ll="ls -l"
+alias bu="brew update"
+alias bd="brew doctor"
+alias python="python3"
+alias zshconfig="vim ~/.zshrc"
+alias ohmyzsh="vim ~/.oh-my-zsh"
+
 # Display completion list
 setopt auto_list
-
 setopt auto_pushd
-
 setopt auto_menu
-
 setopt hist_ignore_dups
-
-setopt hist_ignore_dups
-
+setopt share_history
 setopt hist_reduce_blanks
+setopt inc_append_history
 
 # Disable beep
 setopt no_beep
@@ -112,7 +101,8 @@ setopt rm_star_wait
 setopt transient_rprompt
 
 #
-### Export ###################################################################
+### Export 
+#
 
 # ls color settting
 export CLICOLOR=true
@@ -121,25 +111,14 @@ export LS_COLORS='di=34:ln=35:so=32:pi=33:ex=31:bd=36;01:cd=33;01:su=31;40;07:sg
 
 # History
 export HISTFILE=~/.zsh_history
-export HISTSIZE=1000
-export SAVEHIST=1000000
+export HISTSIZE=100000
+export SAVEHIST=100000
 export EDITOR=vim
 
 # g++
 # not use default mac clang
 # I use gcc
 export PATH="/usr/local/bin:$PATH"
-
-#
-### Alias
-#
-alias vi='vim'
-alias la='ls -a'
-alias ll='ls -l'
-alias lt='ls -l -a -t'
-alias bu='brew update'
-alias bd='brew doctor'
-alias python='python3'
 
 #
 ### Completion
@@ -155,8 +134,6 @@ zstyle ':completion:*:descriptions' format '%F{yellow}-- %d --%f'
 zstyle ':completion:*:options' description 'yes'
 
 
-######################################################
-
 ## sudo用のpathを設定
 typeset -xT SUDO_PATH sudo_path
 typeset -U sudo_path
@@ -165,13 +142,15 @@ sudo_path=({/usr/local,/usr,}/sbin(N-/))
 # setting about zsh-completions
 fpath=(/usr/local/share/zsh-completions $fpath)
 
-######################################################
-# vscode alias
-code() {VSCODE_CWD="$PWD" open -n -b "com.microsoft.VSCode" --args $*}
+#
+### Other
+#
 
-#####################################################
-# Related Docker
+# Docker
 source <(kubectl completion zsh)
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+# nvm
+export NVM_DIR="$HOME/.nvm"
+[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+
