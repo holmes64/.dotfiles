@@ -16,7 +16,6 @@ source $ZSH/oh-my-zsh.sh
 
 #
 #### powerlevel10k
-#
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
@@ -44,7 +43,6 @@ autoload -Uz add-zsh-hook
 autoload -Uz compinit && compinit -u
 autoload -Uz vcs_info
 autoload -Uz ls-abbrev
-autoload -Uz promptinit
 
 #
 ### General setting
