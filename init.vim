@@ -29,6 +29,7 @@ set termguicolors
 
 colorscheme horizon
 
+
 " lightline
 let g:lightline = {}
 let g:lightline.colorscheme = 'horizon'
@@ -42,6 +43,7 @@ let g:gitgutter_sign_allow_clobber = 1
 " vim-airline-settings
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
+let g:airline_theme = 'base16-spacemacs'
 
 nmap <C-p> <Plug>AirlineSelectPrevTab
 nmap <C-n> <Plug>AirlineSelectNextTab
