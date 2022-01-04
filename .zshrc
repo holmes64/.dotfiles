@@ -7,6 +7,7 @@
 export ZSH="/Users/takuya/.oh-my-zsh"
 
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+ZLE_RPROMPT_INDENT=1 
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Add wisely, as too many plugins slow down shell startup.
@@ -39,6 +40,9 @@ bindkey '^R' peco-history-selection
 #
 ### Autoloadings
 #
+# setting about zsh-completions
+fpath=(/opt/homebrew/share/zsh/site-functions $fpath)
+
 autoload -Uz add-zsh-hook
 autoload -Uz compinit && compinit -u
 autoload -Uz vcs_info
@@ -116,7 +120,7 @@ export EDITOR=vim
 # g++
 # not use default mac clang
 # I use gcc
-export PATH="/usr/local/bin:$PATH"
+# export PATH="/usr/local/bin:$PATH"
 
 #
 ### Completion
@@ -135,10 +139,6 @@ zstyle ':completion:*:options' description 'yes'
 ## sudo用のpathを設定
 typeset -xT SUDO_PATH sudo_path
 typeset -U sudo_path
-sudo_path=({/usr/local,/usr,}/sbin(N-/))
-
-# setting about zsh-completions
-fpath=(/usr/local/share/zsh-completions $fpath)
 
 #
 ### Other
@@ -151,4 +151,10 @@ source <(kubectl completion zsh)
 export NVM_DIR="$HOME/.nvm"
 [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
 [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+
+# switch arm64 and x86_64
+if (( $+commands[arch] )); then
+	alias x64='exec arch -arch x86_64 "$SHELL"'
+	alias a64='exec arch -arch arm64e "$SHELL"'
+fi
 

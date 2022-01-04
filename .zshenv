@@ -8,19 +8,18 @@ typeset -U path
 ##            /: ディレクトリのみ残す
 alias ql='qlmanage -p "$@" >& /dev/null'
 
-path=(# システム用
-      /bin(N-/)
-      # 自分用
-      $HOME/local/bin(N-/)
-      # Debian GNU/Linux用
-      /var/lib/gems/*/bin(N-/)
-      # MacPorts用
-      /opt/local/bin(N-/)
-      	/usr/bin(N-/)
-	)
-
-# home-brewにPATHを通す
-export PATH=/usr/local/bin:$PATH
+# Change for M1
+path=(
+  /opt/homebrew/bin(N-/)
+  /opt/homebrew/sbin(N-/)
+  /usr/bin
+  /usr/sbin
+  /bin
+  /sbin
+  /usr/local/bin(N-/)
+  /usr/local/sbin(N-/)
+  /Library/Apple/usr/bin
+)
 
 
 # Setting the go path
