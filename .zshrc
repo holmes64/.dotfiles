@@ -11,7 +11,7 @@ ZLE_RPROMPT_INDENT=1
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git web-search fzf zsh-autosuggestions) 
+plugins=(git web-search fzf zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -56,7 +56,7 @@ autoload -Uz ls-abbrev
 alias vi="nvim"
 alias vim="nvim"
 alias view="nvim -R"
-alias la="ls -a"
+alias la="ls -al"
 alias ll="ls -l"
 alias bu="brew update"
 alias bd="brew doctor"
@@ -117,11 +117,6 @@ export HISTSIZE=100000
 export SAVEHIST=100000
 export EDITOR=vim
 
-# g++
-# not use default mac clang
-# I use gcc
-# export PATH="/usr/local/bin:$PATH"
-
 #
 ### Completion
 #
@@ -144,7 +139,7 @@ typeset -U sudo_path
 ### Other
 #
 
-# Docker
+# Kubernetes 
 source <(kubectl completion zsh)
 
 # nvm
