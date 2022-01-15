@@ -153,3 +153,6 @@ if (( $+commands[arch] )); then
 	alias a64='exec arch -arch arm64e "$SHELL"'
 fi
 
+# anyenv 
+export PATH="$HOME/.anyenv/bin:$PATH"
+eval "$(anyenv init -)"
