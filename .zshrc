@@ -41,10 +41,12 @@ bindkey '^R' peco-history-selection
 ### Autoloadings
 #
 # setting about zsh-completions
-fpath=(/opt/homebrew/share/zsh/site-functions $fpath)
+if type brew &>/dev/null; then
+  FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+  autoload -Uz compinit && compinit
+fi
 
 autoload -Uz add-zsh-hook
-autoload -Uz compinit && compinit -u
 autoload -Uz vcs_info
 autoload -Uz ls-abbrev
 
@@ -156,3 +158,4 @@ fi
 # anyenv 
 export PATH="$HOME/.anyenv/bin:$PATH"
 eval "$(anyenv init -)"
+
