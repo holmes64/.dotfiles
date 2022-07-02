@@ -6,7 +6,8 @@ set textwidth=0
 set autoindent
 set hlsearch
 set number
-set clipboard=unnamed
+set clipboard&
+set clipboard^=unnamedplus
 syntax on
 
 call plug#begin()
@@ -17,6 +18,7 @@ Plug 'preservim/nerdtree'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'ryanoasis/vim-devicons'
+Plug 'easymotion/vim-easymotion'
 call plug#end()
 
 " Start NERDTree when Vim is started without file arguments.
@@ -52,3 +54,9 @@ if !exists('g:airline_symbols')
 	let g:airline_symbols = {}
 endif
  
+" easymotion
+map f <Plug>(easymotion-fl))
+map t <Plug>(easymotion-tl))
+map F <Plug>(easymotion-Fl))
+map T <Plug>(easymotion-Tl))
+
