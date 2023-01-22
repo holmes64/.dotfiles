@@ -11,7 +11,7 @@ ZLE_RPROMPT_INDENT=1
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git web-search fzf zsh-autosuggestions)
+plugins=(git web-search fzf zsh-autosuggestions docker docker-compose)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -46,6 +46,7 @@ if type brew &>/dev/null; then
   autoload -Uz compinit && compinit
 fi
 
+autoload -Uz compinit && compinit
 autoload -Uz add-zsh-hook
 autoload -Uz vcs_info
 autoload -Uz ls-abbrev
@@ -65,6 +66,8 @@ alias bd="brew doctor"
 alias python="python3"
 alias zshconfig="vim ~/.zshrc"
 alias ohmyzsh="vim ~/.oh-my-zsh"
+alias tf="terraform"
+alias k="kubectl"
 
 # Display completion list
 setopt auto_list
@@ -157,7 +160,11 @@ if (( $+commands[arch] )); then
 fi
 
 # anyenv 
-export PATH="$HOME/.anyenv/bin:$PATH"
-eval "$(anyenv init -)"
+# export PATH="$HOME/.anyenv/bin:$PATH"
+# eval "$(anyenv init -)"
 
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+#autoload -U +X bashcompinit && bashcompinit
+#complete -o nospace -C /opt/homebrew/bin/terraform terraform
+
