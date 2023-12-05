@@ -52,22 +52,57 @@ autoload -Uz vcs_info
 autoload -Uz ls-abbrev
 
 #
+### useful shell functions
+#
+function cdls()
+{
+    \cd "$@" && lsd -a
+}
+
+function copy()
+{
+    \cat "$@" | pbcopy
+}
+
+#
 ### General setting
 #
 
-# Alias
+#
+### Alias
+#
+
+# command replacement
 alias vi="nvim"
 alias vim="nvim"
+alias python="python3"
+alias ls="lsd"
+alias ps="procs"
+alias top="ytop"
+alias cd="cdls"
+alias cat="bat"
+
+# useful command
+alias zshconfig="vim ~/.zshrc"
+alias ss="source ~/.zshrc"
+alias ohmyzsh="vim ~/.oh-my-zsh"
 alias view="nvim -R"
 alias la="ls -al"
 alias ll="ls -l"
 alias bu="brew update"
 alias bd="brew doctor"
-alias python="python3"
-alias zshconfig="vim ~/.zshrc"
-alias ohmyzsh="vim ~/.oh-my-zsh"
 alias tf="terraform"
 alias k="kubectl"
+
+# git
+alias ga="git add"
+alias ga.="git add ."
+alias gc="git commit -m"
+alias gf="git diff"
+alias gs="git status"
+alias gb="git branch"
+alias gsw="git switch"
+alias gp="git push"
 
 # Display completion list
 setopt auto_list
