@@ -54,19 +54,13 @@ autoload -Uz ls-abbrev
 #
 ### useful shell functions
 #
-function cdls()
-{
+function cdls() {
     \cd "$@" && lsd -a
 }
 
-function copy()
-{
+function copy() {
     \cat "$@" | pbcopy
 }
-
-#
-### General setting
-#
 
 #
 ### Alias
