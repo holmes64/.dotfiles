@@ -1,3 +1,5 @@
+# Fig pre block. Keep at the top of this file.
+[[ -f "$HOME/.fig/shell/zprofile.pre.zsh" ]] && builtin source "$HOME/.fig/shell/zprofile.pre.zsh"
 #
 # Browser
 #
@@ -13,6 +15,7 @@ fi
 export EDITOR='nano'
 export VISUAL='nano'
 export PAGER='less'
+export TERMINFO=/usr/share/terminfo
 
 #
 # Language
@@ -61,7 +64,6 @@ fi
 
 TMPPREFIX="${TMPDIR%/}/zsh"
 
-
 # Check the current architecture
 ARCH=$(uname -m)
 if [[ $ARCH == arm64 ]]; then
@@ -72,3 +74,11 @@ elif [[ $ARCH == x86_64 ]]; then
 	eval $(/usr/local/bin/brew shellenv)
 fi
 
+# Fig post block. Keep at the bottom of this file.
+[[ -f "$HOME/.fig/shell/zprofile.post.zsh" ]] && builtin source "$HOME/.fig/shell/zprofile.post.zsh"
+
+# Added by OrbStack: command-line tools and integration
+source ~/.orbstack/shell/init.zsh 2>/dev/null || :
+
+# added by Snowflake SnowSQL installer v1.2
+export PATH=/Applications/SnowSQL.app/Contents/MacOS:$PATH
