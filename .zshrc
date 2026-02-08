@@ -53,6 +53,7 @@ autoload -Uz ls-abbrev
 
 #
 ### useful shell functions
+<<<<<<< HEAD
 #
 function cdls() {
     \cd "$@" && lsd -a
@@ -61,6 +62,16 @@ function cdls() {
 function copy() {
     \cat "$@" | pbcopy
 }
+=======
+
+ function cdls() {
+    \cd "$@" && lsd -a
+}
+
+ function copy() {
+     \cat "$@" | pbcopy
+ }
+>>>>>>> 71a7127 (compensate past my changes)
 
 #
 ### Alias
@@ -69,7 +80,11 @@ function copy() {
 # command replacement
 alias vi="nvim"
 alias vim="nvim"
+<<<<<<< HEAD
 alias python="python3"
+=======
+alias python="python3.12"
+>>>>>>> 71a7127 (compensate past my changes)
 alias ls="lsd"
 alias ps="procs"
 alias top="ytop"
@@ -169,6 +184,19 @@ zstyle ':completion:*:options' description 'yes'
 typeset -xT SUDO_PATH sudo_path
 typeset -U sudo_path
 
+
+## yaziの設定
+function ya() {
+	tmp="$(mktemp -t "yazi-cwd.XXXXX")"
+	yazi --cwd-file="$tmp"
+	if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
+}
+
+
+
 #
 ### Other
 #
@@ -188,9 +216,11 @@ if (( $+commands[arch] )); then
 	alias a64='exec arch -arch arm64e "$SHELL"'
 fi
 
-# anyenv 
-# export PATH="$HOME/.anyenv/bin:$PATH"
-# eval "$(anyenv init -)"
+eval "$(starship init zsh)"
+
+# python
+export PATH="/opt/homebrew/opt/python@3.12/bin:$PATH"
+
 
 # [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 

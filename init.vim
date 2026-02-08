@@ -7,7 +7,9 @@ set autoindent
 set hlsearch
 set number
 set clipboard&
+set clipboard=unnamed
 set clipboard^=unnamedplus
+set hls
 syntax on
 
 call plug#begin()
