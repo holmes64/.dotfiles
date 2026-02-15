@@ -8,11 +8,11 @@ local SPACE_3 = '   '
 local HEADER_KEY_NORMAL = { Foreground = DEFAULT_FG, Text = '' }
 local HEADER_LEADER = { Foreground = { Color = '#ffffff' }, Text = '' }
 local HEADER_IME = { Foreground = DEFAULT_FG, Text = 'あ' }
-local HEADER_HOST = { Foreground = { Color = '#75b1a9' }, Text = '' }
-local HEADER_CWD = { Foreground = { Color = '#92aac7' }, Text = '' }
+local HEADER_HOST = { Foreground = { Color = '#75b1a9' }, Text = '' }
+local HEADER_CWD = { Foreground = { Color = '#92aac7' }, Text = '' }
 local HEADER_DATE = { Foreground = { Color = '#ffccac' }, Text = '󱪺' }
-local HEADER_TIME = { Foreground = { Color = '#bcbabe' }, Text = '' }
-local HEADER_BATTERY = { Foreground = { Color = '#dfe166' }, Text = '' }
+local HEADER_TIME = { Foreground = { Color = '#bcbabe' }, Text = '' }
+local HEADER_BATTERY = { Foreground = { Color = '#dfe166' }, Text = '' }
 
 local function AddElement(elems, header, str)
   table.insert(elems, { Foreground = header.Foreground })
