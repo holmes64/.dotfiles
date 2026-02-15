@@ -1,14 +1,13 @@
-local trouble = require 'trouble'
+local trouble = require("trouble")
 
-trouble.setup {
-  focus = true,
-  open_no_results = true,
-}
+trouble.setup({
+	focus = true,
+	open_no_results = true,
+})
 
-vim.keymap.set('n', '<leader>xx', '<cmd>Trouble diagnostics toggle<cr>')
-vim.keymap.set('n', '<leader>xX', '<cmd>Trouble diagnostics toggle filter.buf=0<cr>')
-vim.keymap.set('n', '<leader>cs', '<cmd>Trouble symbols toggle focus=false<cr>')
-vim.keymap.set('n', '<leader>cl', '<cmd>Trouble lsp toggle focus=false win.position=right<cr>')
-vim.keymap.set('n', '<leader>xL', '<cmd>Trouble loclist toggle<cr>')
-vim.keymap.set('n', '<leader>xQ', '<cmd>Trouble qflist toggle<cr>')
-
+vim.keymap.set("n", "<leader>xx", "<cmd>Trouble diagnostics toggle<cr>")
+vim.keymap.set("n", "<leader>xX", "<cmd>Trouble diagnostics toggle filter.buf=0<cr>")
+vim.keymap.set("n", "<leader>cs", "<cmd>Trouble symbols toggle focus=false<cr>")
+vim.keymap.set("n", "<leader>cl", "<cmd>Trouble lsp toggle focus=false win.position=right<cr>")
+vim.keymap.set("n", "<leader>xL", "<cmd>Trouble loclist toggle<cr>")
+vim.keymap.set("n", "<leader>xQ", "<cmd>Trouble qflist toggle<cr>")

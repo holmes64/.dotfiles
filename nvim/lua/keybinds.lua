@@ -1,8 +1,8 @@
 -- if enter x, it's not added into the registry. So you can paste the same copy over and onver
-vim.keymap.set('n', 'x', '"_x')
-vim.keymap.set('n', 'X', '"_X')
-vim.keymap.set('n', 's', '"_s')
-vim.api.nvim_set_var('mapleader', '\\')
+vim.keymap.set("n", "x", '"_x')
+vim.keymap.set("n", "X", '"_X')
+vim.keymap.set("n", "s", '"_s')
+vim.api.nvim_set_var("mapleader", "\\")
 
 --[[
 -- sample to use anonymous function
@@ -11,6 +11,3 @@ function testfunc()
 end
 vim.keymap.set('n', '<Leader>3', testfunc)
 ]]
-
-
-
